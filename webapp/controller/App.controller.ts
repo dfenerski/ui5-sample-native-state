@@ -1,4 +1,4 @@
-import { TaskStateService } from '../model/task/TaskCollectionState.service';
+import { TaskStateService } from '../model/task/TaskState.service';
 import BaseController from './BaseController';
 
 /**
