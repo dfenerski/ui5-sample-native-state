@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/ban-types */
 type ReadonlyPrimitive =
     | undefined
     | null
