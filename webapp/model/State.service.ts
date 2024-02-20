@@ -3,7 +3,7 @@ import JSONModel from 'sap/ui/model/json/JSONModel';
 import { DeepPartial } from '../types/DeepPartial';
 import { DeepReadonly } from '../types/DeepReadonly';
 
-export class StateService<T extends object> {
+export abstract class StateService<T extends object> {
     protected readonly _model: JSONModel;
 
     constructor(modelName: string, data: T) {
