@@ -5,26 +5,76 @@
     controllerName="com.github.dfenerski.native_state.controller.Main"
     displayBlock="true"
 >
-    <Page title="{i18n>appTitle}">
+    <Page showHeader="false">
         <content>
-            <Table items="{path: 'task>/items', templateShareable: false}">
+            <Table items="{path: 'task>/items', sorter: {path: 'priority', descending: true}, templateShareable: false}">
                 <columns>
                     <Column>
-                        <Text text="{i18n>taskTitle}" />
+                        <Text text="{i18n>TASK_TITLE}" />
                     </Column>
                     <Column>
-                        <Text text="{i18n>taskDescription}" />
+                        <Text text="{i18n>TASK_DESCR}" />
+                    </Column>
+                    <Column>
+                        <Text text="{i18n>TASK_STATUS}" />
+                    </Column>
+                    <Column hAlign="End">
+                        <Text text="{i18n>TASK_PRIO}" />
+                    </Column>
+                    <Column hAlign="End">
+                        <Text text="{i18n>COMMON_ACTIONS}" />
                     </Column>
                 </columns>
                 <items>
-                    <ColumnListItem>
+                    <ColumnListItem type="Active" press=".handleEditTaskRequest">
                         <cells>
                             <Text text="{task>title}" />
                             <Text text="{task>description}" />
+                            <core:Icon
+                                src="{path: 'task>status', formatter: '.getStatusIcon'}"
+                                color="{path: 'task>status', formatter: '.getStatusColor'}"
+                                tooltip="{path: 'task>status', formatter: '.getStatusText'}"
+                            />
+                            <HBox renderType="Bare" justifyContent="End">
+                                <items>
+                                    <Text text="{task>priority}" />
+                                    <Button
+                                        class="sapUiTinyMarginEnd"
+                                        type="Success"
+                                        icon="sap-icon://arrow-top"
+                                        tooltip="{i18n>TASK_PRIO_UP}"
+                                        press=".handlePrioChange($event, 1)"
+                                    />
+                                    <Button
+                                        type="Negative"
+                                        icon="sap-icon://arrow-bottom"
+                                        tooltip="{i18n>TASK_PRIO_DOWN}"
+                                        press=".handlePrioChange($event, -1)"
+                                    />
+                                </items>
+                            </HBox>
+                            <HBox renderType="Bare" justifyContent="End">
+                                <items>
+                                    <Button
+                                        icon="sap-icon://copy"
+                                        tooltip="{i18n>COMMON_COPY}"
+                                        press=".handleCopyTaskRequest"
+                                    />
+                                    <Button
+                                        icon="sap-icon://delete"
+                                        tooltip="{i18n>COMMON_DELETE}"
+                                        press=".handleRemoveTaskRequest"
+                                    />
+                                </items>
+                            </HBox>
                         </cells>
+                        <customData>
+                            <core:CustomData key="taskId" value="{task>id}" writeToDom="false" />
+                        </customData>
                     </ColumnListItem>
                 </items>
             </Table>
+            <Button class="sapUiSmallMargin" text="{i18n>TASK_NEW}" press="handleNewTaskRequest" />
         </content>
     </Page>
 </mvc:View>
