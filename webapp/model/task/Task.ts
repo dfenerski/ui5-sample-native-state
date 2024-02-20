@@ -1,9 +1,9 @@
-interface TaskItem {
+export interface TaskItem {
     id: string;
     title: string;
     description: string;
     status: 'open' | 'inProgress' | 'done';
-    priority: 'low' | 'medium' | 'high';
+    priority: number;
 }
 
 export class Task {
