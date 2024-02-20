@@ -1,9 +1,41 @@
 <mvc:View
-	controllerName="com.github.dfenerski.native_state.controller.App"
-	displayBlock="true"
-	xmlns="sap.m"
-	xmlns:mvc="sap.ui.core.mvc">
-
-	<App id="app" />
-
+    controllerName="com.github.dfenerski.native_state.controller.App"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:f="sap.f"
+    xmlns:mvc="sap.ui.core.mvc">
+    <App id="app">
+        <f:DynamicPage class="sapUiNoContentPadding">
+            <f:title>
+                <f:DynamicPageTitle>
+                    <f:heading>
+                        <Title text="{i18n>appTitle}" />
+                    </f:heading>
+                    <f:actions>
+                        <SegmentedButton selectedItem="darkModeButton">
+                            <Button id="lightModeButton" icon="sap-icon://light-mode" press="handleThemeChange('sap_horizon')" />
+                            <Button id="darkModeButton" icon="sap-icon://dark-mode" press="handleThemeChange('sap_horizon_dark')" />
+                        </SegmentedButton>
+                    </f:actions>
+                </f:DynamicPageTitle>
+            </f:title>
+            <f:content>
+                <f:FlexibleColumnLayout
+                    id="rootNavContainer"
+                    layout="{app>/layout}"
+                    backgroundDesign="Solid"
+                >
+                    <f:beginColumnPages>
+                        <!-- added by router -->
+                    </f:beginColumnPages>
+                    <f:midColumnPages>
+                        <!-- added by router -->
+                    </f:midColumnPages>
+                    <f:endColumnPages>
+                        <!-- added by router -->
+                    </f:endColumnPages>
+                </f:FlexibleColumnLayout>
+            </f:content>
+        </f:DynamicPage>
+    </App>
 </mvc:View>

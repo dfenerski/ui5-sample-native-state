@@ -57,11 +57,10 @@
 
         "routing": {
             "config": {
-                "routerClass": "sap.m.routing.Router",
+                "routerClass": "sap.f.routing.Router",
                 "viewType": "XML",
                 "viewPath": "com.github.dfenerski.native_state.view",
-                "controlId": "app",
-                "controlAggregation": "pages",
+                "controlId": "rootNavContainer",
                 "async": true
             },
             "routes": [
@@ -74,7 +73,15 @@
             "targets": {
                 "main": {
                     "viewId": "main",
-                    "viewName": "Main"
+                    "viewName": "Main",
+                    "controlAggregation": "beginColumnPages",
+                    "clearControlAggregation": false
+                },
+                "task": {
+                    "viewId": "task",
+                    "viewName": "Task",
+                    "controlAggregation": "midColumnPages",
+                    "clearControlAggregation": false
                 }
             }
         }
