@@ -4,15 +4,19 @@ import { DeepPartial } from '../types/DeepPartial';
 import { DeepReadonly } from '../types/DeepReadonly';
 
 export class StateService<T extends object> {
-    private readonly _model: JSONModel;
+    protected readonly _model: JSONModel;
 
     constructor(modelName: string, data: T) {
         this._model = new JSONModel(data);
         this.register(modelName);
     }
 
+    protected get _data(): T {
+        return <T>this._model.getData();
+    }
+
     public get state(): DeepReadonly<T> {
-        return <DeepReadonly<T>>this._model.getData();
+        return <DeepReadonly<T>>this._data;
     }
 
     private register(modelName: string) {
