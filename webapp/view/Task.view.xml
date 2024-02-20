@@ -1,0 +1,33 @@
+<mvc:View
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+    xmlns:form="sap.ui.layout.form"
+    xmlns="sap.m"
+    controllerName="com.github.dfenerski.native_state.controller.Task"
+    displayBlock="true"
+>
+    <Page showHeader="false">
+        <form:SimpleForm>
+            <Label text="{i18n>TASK_TITLE}" />
+            <Input value="{task>/selectedTask/title}" />
+            <Label text="{i18n>TASK_DESCR}" />
+            <Input value="{task>/selectedTask/description}" />
+            <Label text="{i18n>TASK_STATUS}" />
+            <Select selectedKey="{task>/selectedTask/status}">
+                <core:Item key="open" text="{i18n>TASK_STATUS_OPEN}" />
+                <core:Item key="inProgress" text="{i18n>TASK_STATUS_IN_PROGRESS}" />
+                <core:Item key="done" text="{i18n>TASK_STATUS_DONE}" />
+            </Select>
+            <Label text="{i18n>TASK_PRIO}" />
+            <StepInput value="{task>/selectedTask/priority}" min="1" />
+        </form:SimpleForm>
+        <footer>
+            <Bar>
+                <contentRight>
+                    <Button text="{i18n>COMMON_CLOSE}" press=".handleCloseRequest" />
+                    <Button type="Emphasized" text="{i18n>COMMON_SAVE}" press=".handleSaveRequest" />
+                </contentRight>
+            </Bar>
+        </footer>
+    </Page>
+</mvc:View>
