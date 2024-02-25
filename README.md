@@ -298,7 +298,7 @@ export default class Main extends BaseController {
 
 # Conclusion
 
-We've shown a way to manage state using TypeScript and ES classes only - zero dependencies were needed. We've exposed type-safe "read" access and strongly typed model setters for any mutations we might need to run. This pattern can be greatly expanded, but its performance limits are the performance limits of `JSONModel` itself. We've delegated as much as possible to the framework itself, while building a nice API for ourselves.
+We've shown a way to manage state using TypeScript and ES classes only - zero dependencies were needed. We've exposed type-safe "read" access and strongly typed model setters for any mutations we might need to run. This pattern can be greatly expanded, while its performance limits are the performance limits of `JSONModel` itself. We've delegated as much as possible to the framework itself, while building a nice API for ourselves.
 
 As mentioned, some things may be missing. In any case, please try the app / the pattern for yourself. The app was generated using `yo easy-ui5 ts-app` so a `npm install && npm run start` should spin up an instance for you.
 
